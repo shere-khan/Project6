@@ -13,10 +13,13 @@ int main() {
             fscanf(ifp, "%d", &keys[i]);
         bool chest_open = false;
         int matches = 0;
+        bool ask_matches = false;
         do {
-            printf("You have %d matches", matches);
+            if (ask_matches)
+                printf("You have %d matches\n", matches);
+            ask_matches = true;
             int keys_to_use[NUM_KEYS];
-            printf("Now you must enter 7 keys you would like to use\n");
+            printf("Enter 7 keys you would like to use\n");
             int keys_entered = 0;
             while (keys_entered < 7) {
                 printf("Enter key #%d:", keys_entered + 1);
@@ -37,9 +40,7 @@ int main() {
                 chest_open = true;
         } while (!chest_open);
         printf("you opened the chest");
-    } else {
+    } else
         printf("File open failure.\n");
-        return 0;
-    }
     return 0;
 }
